@@ -522,22 +522,22 @@ abstract class PhysicalConnection extends OracleConnection {
 	}
 
 	public synchronized void close() throws SQLException {
-		/* 1160 */if ((this.lifecycle == 2) || (this.lifecycle == 4)) {
-			/* 1161 */return;
+		if ((this.lifecycle == 2) || (this.lifecycle == 4)) {
+			return;
 		}
-		/* 1163 */if (this.lifecycle == 1)
+		if (this.lifecycle == 1)
 			this.lifecycle = 2;
 
 		try {
-			/* 1167 */if (this.closeCallback != null) {
-				/* 1168 */this.closeCallback.beforeClose(this, this.privateData);
+			if (this.closeCallback != null) {
+				this.closeCallback.beforeClose(this, this.privateData);
 			}
-			/* 1170 */closeStatements(true);
+			closeStatements(true);
 
-			/* 1176 */needLine();
+			needLine();
 
-			/* 1179 */if (this.isProxy) {
-				/* 1181 */close(1);
+			if (this.isProxy) {
+				close(1);
 			}
 
 			/* 1184 */logoff();
@@ -867,7 +867,7 @@ abstract class PhysicalConnection extends OracleConnection {
 			}
 
 			/* 2013 */if (this.endToEndValues != null) {
-				/* 2015 */for (i = 0; i < 4; i++) {
+				/* 2015 */for (int i = 0; i < 4; i++) {
 					/* 2017 */str = paramArrayOfString[i];
 
 					/* 2019 */if (((str != null) || (this.endToEndValues[i] == null)) && ((str == null) || (str.equals(this.endToEndValues[i])))) {
@@ -879,7 +879,7 @@ abstract class PhysicalConnection extends OracleConnection {
 
 				/* 2028 */this.endToEndHasChanged[0] |= this.endToEndHasChanged[3];
 			} else {
-				/* 2033 */for (i = 0; i < 4; i++) {
+				/* 2033 */for (int i = 0; i < 4; i++) {
 					/* 2035 */this.endToEndHasChanged[i] = true;
 				}
 

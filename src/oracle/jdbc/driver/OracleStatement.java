@@ -288,7 +288,7 @@ public abstract class OracleStatement implements oracle.jdbc.internal.OracleStat
 		/* 835 */if ((this.streamList != null) && (!this.connection.useFetchSizeWithLongColumn)) {
 			/* 836 */this.rowPrefetch = 1;
 		}
-		/* 838 */k = this.rowPrefetch;
+		int k = this.rowPrefetch;
 
 		/* 840 */this.definesBatchSize = k;
 
